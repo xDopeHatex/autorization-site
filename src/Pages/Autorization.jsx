@@ -44,7 +44,7 @@ function Autorization() {
       case ACTIONS.PASSWORD:
         return { ...state, password: action.value };
       case ACTIONS.FIRSTNAME:
-        return { ...state, fitstName: action.value };
+        return { ...state, firstName: action.value };
       case ACTIONS.LASTNAME:
         return { ...state, lastName: action.value };
       case ACTIONS.PHONENUMBER:
@@ -69,6 +69,7 @@ function Autorization() {
 
     try {
       event.preventDefault();
+      console.log(state);
 
       const x = await axios.post(
         "http://192.168.5.4:8080/user/register",
