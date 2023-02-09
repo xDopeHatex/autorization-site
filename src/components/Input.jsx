@@ -1,6 +1,10 @@
 import React from "react";
 
 function Input(props) {
+  const inputValue = (event) => {
+    props.inputValue([event.target.id, event.target.value]);
+  };
+
   return (
     <div className="flex flex-col">
       <label
@@ -10,6 +14,7 @@ function Input(props) {
         {props.children}
       </label>
       <input
+        onChange={inputValue}
         type={props.type}
         id={props.id}
         className="input-color border-[1px] rounded-sm border-stone-300 p-2"

@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import { useState, useReducer } from "react";
 import Header from "../components/Header";
 import Wrapper from "../components/Wrapper";
 import TextBlackNormal from "../components/TextBlackNormal";
@@ -11,6 +13,72 @@ import img3 from "../images/3rd-icon.png";
 import Input from "../components/Input";
 
 function Autorization() {
+  const inputValueHandler = (event) => {
+    console.log(event);
+    dispatch({ type: event[0], value: event[1] });
+    console.log(state);
+  };
+
+  const ACTIONS = {
+    EMAIL: "email",
+    PASSWORD: "password",
+    FIRSTNAME: "firstName",
+    LASTNAME: "lastName",
+    PHONENUMBER: "phoneNumber",
+    BIRTHDAY: "birthDay",
+  };
+
+  const initialState = {
+    email: "not null",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "not null",
+    password: "not null",
+    birthDay: "",
+  };
+
+  function reducer(state, action) {
+    switch (action.type) {
+      case ACTIONS.EMAIL:
+        return { ...state, email: action.value };
+      case ACTIONS.PASSWORD:
+        return { ...state, password: action.value };
+      case ACTIONS.FIRSTNAME:
+        return { ...state, fitstName: action.value };
+      case ACTIONS.LASTNAME:
+        return { ...state, lastName: action.value };
+      case ACTIONS.PHONENUMBER:
+        return { ...state, phoneNumber: action.value };
+      case ACTIONS.BIRTHDAY:
+        return { ...state, birthDay: action.value };
+      default:
+        throw new Error();
+    }
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+
+    try {
+      event.preventDefault();
+
+      const x = await axios.post(
+        "https://pocketbase.sksoldev.com/api/collections/sites_feedback/records",
+        {
+          email: state.email,
+          firstName: state.firstName,
+          lastName: state.lastName,
+          phoneNumber: state.phoneNumber,
+          password: state.password,
+          birthDay: state.birthDay,
+        }
+      );
+      console.log(x);
+    } catch (error) {}
+  };
+
   return (
     <>
       <Header />
@@ -48,26 +116,57 @@ function Autorization() {
       <Line />
       <Wrapper>
         <form
+          onSubmit={submitHandler}
           className="grid grid-cols-1 md:grid-cols-2 space-y-6 md:space-y-0 md:gap-3"
           id="myform"
         >
-          <Input id={"email"} type={"email"} placeholder={"you@example.com"}>
+          <Input
+            id={"email"}
+            type={"email"}
+            placeholder={"you@example.com"}
+            inputValue={inputValueHandler}
+          >
             Enter your email
           </Input>
 
-          <Input id={"password"} type={"text"} placeholder={"password"}>
+          <Input
+            id={"password"}
+            type={"text"}
+            placeholder={"password"}
+            inputValue={inputValueHandler}
+          >
             Create a password
           </Input>
-          <Input id={"first-name"} type={"text"} placeholder={"first name"}>
+          <Input
+            id={"firstName"}
+            type={"text"}
+            placeholder={"first name"}
+            inputValue={inputValueHandler}
+          >
             Enter your first name
           </Input>
-          <Input id={"last-name"} type={"text"} placeholder={"last name"}>
+          <Input
+            id={"lastName"}
+            type={"text"}
+            placeholder={"last name"}
+            inputValue={inputValueHandler}
+          >
             Enter your last name
           </Input>
-          <Input id={"phone-number"} type={"tel"} placeholder={"8-999-9999"}>
+          <Input
+            id={"phoneNumber"}
+            type={"tel"}
+            placeholder={"8-999-9999"}
+            inputValue={inputValueHandler}
+          >
             Enter your mobile phone number
           </Input>
-          <Input id={"birth-day"} type={"date"} placeholder={"26/09/1992"}>
+          <Input
+            id={"birthDay"}
+            type={"date"}
+            placeholder={"26/09/1992"}
+            inputValue={inputValueHandler}
+          >
             Enter your birthday
           </Input>
         </form>
@@ -89,7 +188,7 @@ function Autorization() {
           <button
             type="submit"
             form="myform"
-            className="bg-blue-600 w-full rounded-sm my-8 text-white py-2 font-bold"
+            className="bg-blue-600 w-full rounded-sm my-8 text-white py-2 font-bold hover:bg-blue-700 active:bg-blue-800"
           >
             CONTINUE
           </button>
