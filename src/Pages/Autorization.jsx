@@ -58,6 +58,12 @@ function Autorization() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const customConfig = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
   const submitHandler = async (event) => {
     event.preventDefault();
 
@@ -65,7 +71,7 @@ function Autorization() {
       event.preventDefault();
 
       const x = await axios.post(
-        "https://pocketbase.sksoldev.com/api/collections/sites_feedback/records",
+        "http://192.168.5.4:8080/user/register",
         {
           email: state.email,
           firstName: state.firstName,
@@ -73,7 +79,8 @@ function Autorization() {
           phoneNumber: state.phoneNumber,
           password: state.password,
           birthDay: state.birthDay,
-        }
+        },
+        customConfig
       );
       console.log(x);
     } catch (error) {}
