@@ -85,9 +85,9 @@ function Login() {
       <Wrapper className={"space-y-10 max-w-[35rem] lg:mt-[15rem] mt-[8rem]"}>
         <h1 className="text-slate-800 font-extrabold text-4xl">Sign in</h1>
         <div className="space-y-4 ">
-          <h3 className="text-slate-800 font-extrabold text-lg">
+          <h3 className="text-slate-800 font-extrabold text-md">
             New to DBD?{" "}
-            <Link to={"/"} className="text-blue-600 font-extrabold text-lg">
+            <Link to={"/"} className="text-blue-600 font-extrabold text-md">
               Sign up
             </Link>
           </h3>
@@ -109,7 +109,7 @@ function Login() {
               );
             })}
           </form>
-          <h3 className="text-blue-600 font-extrabold text-lg">
+          <h3 className="text-blue-600 font-extrabold text-md">
             Forgot password?
           </h3>
         </div>
