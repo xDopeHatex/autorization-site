@@ -19,6 +19,48 @@ function Autorization() {
     console.log(state);
   };
 
+  const inputs = [
+    {
+      id: "email",
+      type: "email",
+      placeholder: "you@example.com",
+      text: "Enter your email",
+    },
+    {
+      id: "password",
+      type: "text",
+      placeholder: "password",
+      text: " Create a password",
+    },
+    {
+      id: "firstName",
+      type: "text",
+      placeholder: "firstName",
+      text: "Enter your first name",
+    },
+
+    {
+      id: "lastName",
+      type: "text",
+      placeholder: "lastName",
+      text: "Enter your last name",
+    },
+
+    {
+      id: "phoneNumber",
+      type: "tel",
+      placeholder: "8-999-9999",
+      text: "Enter your mobile phone number",
+    },
+
+    {
+      id: "birthDay",
+      type: "date",
+      placeholder: "26/09/1992",
+      text: "Enter your birthday",
+    },
+  ];
+
   const ACTIONS = {
     EMAIL: "email",
     PASSWORD: "password",
@@ -128,55 +170,19 @@ function Autorization() {
           className="grid grid-cols-1 md:grid-cols-2 space-y-6 md:space-y-0 md:gap-3"
           id="myform"
         >
-          <Input
-            id={"email"}
-            type={"email"}
-            placeholder={"you@example.com"}
-            inputValue={inputValueHandler}
-          >
-            Enter your email
-          </Input>
-
-          <Input
-            id={"password"}
-            type={"text"}
-            placeholder={"password"}
-            inputValue={inputValueHandler}
-          >
-            Create a password
-          </Input>
-          <Input
-            id={"firstName"}
-            type={"text"}
-            placeholder={"first name"}
-            inputValue={inputValueHandler}
-          >
-            Enter your first name
-          </Input>
-          <Input
-            id={"lastName"}
-            type={"text"}
-            placeholder={"last name"}
-            inputValue={inputValueHandler}
-          >
-            Enter your last name
-          </Input>
-          <Input
-            id={"phoneNumber"}
-            type={"tel"}
-            placeholder={"8-999-9999"}
-            inputValue={inputValueHandler}
-          >
-            Enter your mobile phone number
-          </Input>
-          <Input
-            id={"birthDay"}
-            type={"date"}
-            placeholder={"26/09/1992"}
-            inputValue={inputValueHandler}
-          >
-            Enter your birthday
-          </Input>
+          {inputs.map(function (item, index) {
+            return (
+              <Input
+                key={index}
+                id={item.id}
+                type={item.type}
+                placeholder={item.placeholder}
+                inputValue={inputValueHandler}
+              >
+                {item.text}
+              </Input>
+            );
+          })}
         </form>
       </Wrapper>
       <Line />
