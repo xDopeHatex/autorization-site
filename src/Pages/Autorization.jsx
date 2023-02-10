@@ -7,6 +7,7 @@ import Wrapper from "../components/Wrapper";
 import TextBlackNormal from "../components/TextBlackNormal";
 import ComponentWithPic from "../components/ComponentWithPic";
 import Line from "../components/Line";
+import { Link } from "react-router-dom";
 
 import img1 from "../images/1st-icon.png";
 import img2 from "../images/2nd-icon.png";
@@ -15,9 +16,7 @@ import Input from "../components/Input";
 
 function Autorization() {
   const inputValueHandler = (event) => {
-    console.log(event);
     dispatch({ type: event[0], value: event[1] });
-    console.log(state);
   };
 
   const inputs = [
@@ -29,7 +28,7 @@ function Autorization() {
     },
     {
       id: "password",
-      type: "text",
+      type: "password",
       placeholder: "password",
       text: " Create a password",
     },
@@ -94,6 +93,7 @@ function Autorization() {
         return { ...state, phoneNumber: action.value };
       case ACTIONS.BIRTHDAY:
         return { ...state, birthDay: action.value };
+
       default:
         throw new Error();
     }
@@ -223,7 +223,9 @@ function Autorization() {
       <div className="flex justify-center mb-10">
         <div className="text-stone-500 text-sm">
           Already have a DBD account?{" "}
-          <span className="text-blue-600 font-semibold">Sign in</span>
+          <Link to={"/login"} className="text-blue-600 font-semibold">
+            Sign in
+          </Link>
         </div>
       </div>
     </>
