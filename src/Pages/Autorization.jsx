@@ -6,7 +6,7 @@ import Wrapper from "../components/Wrapper";
 import TextBlackNormal from "../components/TextBlackNormal";
 import ComponentWithPic from "../components/ComponentWithPic";
 import Line from "../components/Line";
-// import TextBlackBold from "./components/TextBlackBold";
+
 import img1 from "../images/1st-icon.png";
 import img2 from "../images/2nd-icon.png";
 import img3 from "../images/3rd-icon.png";
@@ -35,14 +35,14 @@ function Autorization() {
     {
       id: "firstName",
       type: "text",
-      placeholder: "firstName",
+      placeholder: "first name",
       text: "Enter your first name",
     },
 
     {
       id: "lastName",
       type: "text",
-      placeholder: "lastName",
+      placeholder: "last name",
       text: "Enter your last name",
     },
 
