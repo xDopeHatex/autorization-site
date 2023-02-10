@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useReducer } from "react";
 import Header from "../components/Header";
+import Button from "../components/Button";
 import Wrapper from "../components/Wrapper";
 import TextBlackNormal from "../components/TextBlackNormal";
 import ComponentWithPic from "../components/ComponentWithPic";
@@ -221,7 +222,7 @@ function Autorization() {
       <Line />
       <div className="flex justify-center mb-10">
         <div className="text-stone-500 text-sm">
-          Already have a Square account?{" "}
+          Already have a DBD account?{" "}
           <span className="text-blue-600 font-semibold">Sign in</span>
         </div>
       </div>
