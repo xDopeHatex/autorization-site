@@ -67,7 +67,7 @@ function Login() {
       const x = await axios.post(
         "http://192.168.5.4:8080/user/login",
         {
-          email: state.email,
+          username: state.email,
 
           password: state.password,
         },
